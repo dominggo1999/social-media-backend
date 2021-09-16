@@ -2,10 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-  console.log(req.body);
+const authController = require('../controllers/auth.controller');
 
-  res.status(200).send('success');
-});
+// Register user to mongodb database
+router.post('/register', authController.register);
+
+// Login user
+router.post('/login', authController.login);
 
 module.exports = router;
